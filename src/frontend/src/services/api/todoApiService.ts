@@ -1,52 +1,64 @@
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import type { TodoItemRequest, TodoItemResponse } from '@/types';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL as string;
 
-const todoApiService = axios.create({
+const apiClient = axios.create({
     baseURL: `${API_BASE_URL}/api`,
 });
 
-export const createTodo = async (todoData:TodoItemRequest) => {
+const createTodo = async (todoData:TodoItemRequest) => {
     try {
-        const response = await todoApiService.post('/todos', todoData);
-        return response.data;
+        const response = await apiClient.post('/todos', todoData);
+        return response.data as TodoItemResponse;
     } catch (error) {
         throw new Error('Failed to create todo');
     }
 };
 
-export const getTodos = async () => {
+const getTodos = async () => {
     try {
-        const response = await todoApiService.get('/todos');
-        return response.data as TodoItemResponse[];
+        const response = await apiClient.get('/todos');
+        var data = response.data;
+        console.log('called the getTodos method');
+        return data as TodoItemResponse[];
     } catch (error) {
         throw new Error('Failed to get todos');
     }
 };
 
-export const getTodo = async (id:string) => {
+const getTodo = async (id:string) => {
     try {
-        const response = await todoApiService.get(`/todos/${id}`);
+        const response = await apiClient.get(`/todos/${id}`);
         return response.data as TodoItemResponse;
     } catch (error) {
         throw new Error('Failed to get todo');
     }
 };
 
-export const updateTodo = async (id:string, todoData:TodoItemRequest) => {
+const updateTodo = async (id:string, todoData:TodoItemRequest) => {
     try {
-        const response = await todoApiService.put(`/todos/${id}`, todoData);
+        const response = await apiClient.put(`/todos/${id}`, todoData);
         return response.data as TodoItemResponse;
     } catch (error) {
         throw new Error('Failed to update todo');
     }
 };
 
-export const deleteTodo = async (id:string) => {
+const deleteTodo = async (id:string) => {
     try {
-        await todoApiService.delete(`/todos/${id}`);
+        await apiClient.delete(`/todos/${id}`);
     } catch (error) {
         throw new Error('Failed to delete todo');
     }
 };
+
+const TodoApiService = {
+    createTodo,
+    getTodos,
+    getTodo,
+    updateTodo,
+    deleteTodo,
+};
+
+export default TodoApiService;

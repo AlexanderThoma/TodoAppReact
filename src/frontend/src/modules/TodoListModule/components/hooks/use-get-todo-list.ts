@@ -1,12 +1,15 @@
-const useGetTodoList = () => {
-    const getTodoList = () => {
-        
-        // call service here
+import TodoApiService from "@/services/api/TodoApiService";
+import type { TodoItemResponse } from "@/types";
 
-        // return type is the type from the api (responseModel)
+// ????
 
-        // do validation here
-    };
+const useGetTodoList = async () => {
+    
+    const result = await TodoApiService.getTodos() as TodoItemResponse[];
+
+    // TODO: do some validation here
+
+    return result;
 };
 
 export default useGetTodoList;

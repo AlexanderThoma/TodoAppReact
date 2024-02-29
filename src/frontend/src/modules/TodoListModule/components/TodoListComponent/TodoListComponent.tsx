@@ -1,17 +1,18 @@
+import type { TodoListComponentProps } from "@/types";
 import type { FC } from "react";
+import TodoItemComponent from "../TodoItemComponent/TodoItemComponent";
 
-interface TodoItemProps {
-    name: string;
-    age: string;
-  }
-
-const TodoListComponent:FC<TodoItemProps> = ({name, age}) => {
+const TodoListComponent:FC<TodoListComponentProps> = ({todoList}) => {
 
     return(
         <>
-            <div>
-                <h1></h1>
-            </div>
+            <ul>
+                {todoList.map((todo) => (
+                    <TodoItemComponent item={todo} />
+                ))}
+            </ul>
         </>
     )
 };
+
+export default TodoListComponent;

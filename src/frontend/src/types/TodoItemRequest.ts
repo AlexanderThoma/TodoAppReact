@@ -1,4 +1,5 @@
 type TodoItemRequest = {
+    title: string;
     content: string;
 }
 

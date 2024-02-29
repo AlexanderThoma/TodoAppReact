@@ -1,3 +1,3 @@
 ﻿namespace TodoApp.Api.Model.Request;
 
-public record UpdateTodoRequest(string Content);
+public record UpdateTodoRequest(string Title, string Content);

@@ -9,6 +9,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoApp.Api", "src\backend\
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "todoapp.client", "src\frontend\todoapp.client.esproj", "{812816BE-BD01-4CDF-89A0-E7F0C85EB95F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GlobalFiles", "GlobalFiles", "{2B8E2EA1-295C-43E5-BA39-5C110C9B3DCF}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		global.json = global.json
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

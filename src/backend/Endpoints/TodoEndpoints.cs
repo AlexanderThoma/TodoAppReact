@@ -8,7 +8,8 @@ namespace TodoApp.Api.Endpoints;
 
 public static class TodoEndpoints
 {
-    private static readonly List<TodoItemDbModel> TodoItems = [];
+    private static readonly List<TodoItemDbModel> TodoItems =
+        [new TodoItemDbModel(Guid.NewGuid(), "Seeding", "manually created", DateTimeOffset.UtcNow)];
 
     public static WebApplication MapTodoEndpoints(this WebApplication app)
     {

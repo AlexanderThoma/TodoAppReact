@@ -29,6 +29,8 @@
       "@/*": ["src/*"]
     },
 
+    "outDir": "./dest",
+
     "types": ["vite/client"]
   },
   "include": ["src","src/**/*.ts","src/**/*.d.ts","src/**/*.tsx"],

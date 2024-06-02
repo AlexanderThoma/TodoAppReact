@@ -68,11 +68,12 @@ public static class TodoEndpoints
             });
         }
 
-        var updatedTodo = todo with { Id = todo.Id, Content = request.Content };
+        var updatedTodo = todo with { Id = todo.Id, Content = request.Content, Title = request.Title};
         TodoItems.Remove(todo);
         TodoItems.Add(updatedTodo);
 
-        return TypedResults.Ok(new TodoItemResponse(todo.Id, todo.Title, todo.Content, todo.CreatedOn));
+        return TypedResults.Ok(new TodoItemResponse(updatedTodo.Id, updatedTodo.Title, updatedTodo.Content,
+            updatedTodo.CreatedOn));
     }
 
     public static async Task<Ok<List<TodoItemResponse>>> GetTodos()

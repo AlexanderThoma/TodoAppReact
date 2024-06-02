@@ -16,8 +16,8 @@ export default defineConfig({
     }
   },
   root: ".",
-  // always put npm build result in ./build folder
+  // always put npm build result in ./dist folder
   build: {
-    outDir: "./build"
+    outDir: "./dist"
   }
 })

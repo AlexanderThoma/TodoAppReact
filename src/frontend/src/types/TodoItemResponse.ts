@@ -1,7 +1,7 @@
 type TodoItemResponse = {
     id: string;
-    content: string;
     title: string;
+    content: string;
     createdOn: Date;
 }
 

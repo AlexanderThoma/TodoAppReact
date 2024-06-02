@@ -1,4 +1,4 @@
-import type { TodoItemResponse } from "../TodoItemResponse";
+import type { TodoItemResponse } from "@/types";
 
 type TodoListComponentProps = {
     todoList: TodoItemResponse[];

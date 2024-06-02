@@ -11,6 +11,8 @@
     "tsc": "tsc"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.3.1",
+    "antd": "^5.14.2",
     "axios": "^1.6.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

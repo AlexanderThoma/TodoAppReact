@@ -1,4 +1,4 @@
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 import type { TodoItemRequest, TodoItemResponse } from '@/types';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL as string;
@@ -19,9 +19,7 @@ const createTodo = async (todoData:TodoItemRequest) => {
 const getTodos = async () => {
     try {
         const response = await apiClient.get('/todos');
-        var data = response.data;
-        console.log('called the getTodos method');
-        return data as TodoItemResponse[];
+        return response.data as TodoItemResponse[];
     } catch (error) {
         throw new Error('Failed to get todos');
     }

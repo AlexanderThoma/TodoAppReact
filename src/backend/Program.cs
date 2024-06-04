@@ -1,8 +1,12 @@
+using Serilog;
 using TodoApp.Api.Endpoints;
 
 const string myAllowSpecificOrigins = "disable cors";
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Host.UseSerilog((_, configureLogger)
+    => configureLogger.ReadFrom.Configuration(builder.Configuration));
 
 
 /*builder.Services

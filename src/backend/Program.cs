@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Serilog;
 using TodoApp.Api.Endpoints;
 
@@ -41,6 +42,8 @@ builder.Services.AddCors(options =>
         });
 });
 
+builder.Services.AddHealthChecks().AddCheck("self", () => HealthCheckResult.Healthy());
+
 
 var app = builder.Build();
 
@@ -51,5 +54,8 @@ app.UseSwaggerUI();
 app.UseCors(myAllowSpecificOrigins);
 
 app.MapTodoEndpoints();
+
+app.MapHealthChecks("api/health")
+    .AllowAnonymous();
 
 app.Run();

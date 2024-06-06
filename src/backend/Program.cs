@@ -1,6 +1,8 @@
+using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Serilog;
 using TodoApp.Api.Endpoints;
+using TodoApp.Api.Telemetry;
 
 const string myAllowSpecificOrigins = "disable cors";
 
@@ -43,7 +45,7 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services.AddHealthChecks().AddCheck("self", () => HealthCheckResult.Healthy());
-
+builder.Services.AddSingleton<ITelemetryInitializer, CloneIpAddress>();
 
 var app = builder.Build();
 
